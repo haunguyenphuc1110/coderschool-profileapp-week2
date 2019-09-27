@@ -14,4 +14,4 @@ Exercise about Profile App in React Native
 - [x] Layout header with Back button and Filter button
 - [x] Make button Follow and Send Message can press and alert followed when press follow button, alert message sended when press on send message button
 
-![Screenshoot](screenshoot.png)
+![Screenshoot](screenshoot.gif)
