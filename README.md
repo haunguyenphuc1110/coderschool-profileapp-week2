@@ -1,6 +1,9 @@
 # coderschool-profileapp-week2
 Exercise about Profile App in React Native
 
+![Screenshoot](screenshoot.gif)
+
+
 #Features
 - [x] Has a beauty avatar
 - [x] Display your full name
@@ -13,5 +16,3 @@ Exercise about Profile App in React Native
 - [x] Create beautiful Bottom tab layout using Flex + Vector icons
 - [x] Layout header with Back button and Filter button
 - [x] Make button Follow and Send Message can press and alert followed when press follow button, alert message sended when press on send message button
-
-![Screenshoot](screenshoot.gif)
