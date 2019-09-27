@@ -1,7 +1,18 @@
 import { StyleSheet } from 'react-native'; 
 import { COLORS } from '../../assets';
 
-export default styles = StyleSheet.create({
+const shadow = {
+  shadowColor: COLORS.BLACK,
+  shadowOffset: {
+    width: 0,
+    height: 4
+  },
+  shadowOpacity: 0.32,
+  shadowRadius: 5.46,
+  elevation: 9
+}
+
+const styles = StyleSheet.create({
   main: { 
     flex: 1, 
     justifyContent: 'space-between', 
@@ -40,7 +51,8 @@ export default styles = StyleSheet.create({
     justifyContent: 'center', 
     alignItems: 'center', 
     backgroundColor: COLORS.FOLLOW_COLOR,
-    borderRadius: 20
+    borderRadius: 20,
+    ...shadow
   },
   followText: {
     color: '#FFF'
@@ -52,7 +64,8 @@ export default styles = StyleSheet.create({
     alignItems: 'center', 
     backgroundColor: COLORS.SEND_MESSAGE_COLOR,
     marginLeft: 10, 
-    borderRadius: 20
+    borderRadius: 20,
+    ...shadow
   },
   infoProfile: { 
     flexDirection: 'row', 
@@ -96,3 +109,5 @@ export default styles = StyleSheet.create({
     marginVertical: 20
   }
 });
+
+export default styles;
