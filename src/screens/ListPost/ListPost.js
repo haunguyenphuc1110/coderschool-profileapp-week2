@@ -7,42 +7,42 @@ import Post from '../Post/Post';
 const space = 10;
 const postContainerWidth = (Dimensions.get('window').width - space * 3) / 2;
 
-class ListPost extends Component {
-  static propTypes = {
-    containerStyle: PropTypes.oneOfType([PropTypes.object, PropTypes.number]),
-    posts: PropTypes.arrayOf(
-      PropTypes.shape({
-        image: PropTypes.number,
-        imageHeight: PropTypes.number,
-        imageWidth: PropTypes.number,
-      })
-    ).isRequired,
-  }
+const renderEachPost = (item) => {
+  return (
+    <Post
+      key={`post-${item.id} `}
+      containerStyle={styles.postContainer}
+      postWidth={postContainerWidth}
+      {...item}
+    />
+  )
+}
 
-  static defaultProps = {
-    containerStyle: {},
-  }
+const ListPost = props => {
+  return (
+    <FlatList
+      scrollEnabled={false}
+      data={props.posts}
+      keyExtractor={item => item.id.toString()}
+      numColumns={1}
+      renderItem={({ item }) => renderEachPost(item)}
+    />
+  )
+}
 
-  render() {
-    return (
-      <FlatList
-        scrollEnabled={false}
-        data={this.props.posts}
-        keyExtractor={item => item.id.toString()}
-        numColumns={1}
-        renderItem={({item}) => {
-          return (
-            <Post
-              key={`post-${item.id} `}
-              containerStyle={styles.postContainer}
-              postWidth={postContainerWidth}
-              {...item}
-            />
-          )
-        }}
-      />
-    )
-  }
+ListPost.propTypes = {
+  containerStyle: PropTypes.oneOfType([PropTypes.object, PropTypes.number]),
+  posts: PropTypes.arrayOf(
+    PropTypes.shape({
+      image: PropTypes.number,
+      imageHeight: PropTypes.number,
+      imageWidth: PropTypes.number,
+    })
+  ).isRequired,
+}
+
+ListPost.defaultProps = {
+  containerStyle: {},
 }
 
 export default ListPost;

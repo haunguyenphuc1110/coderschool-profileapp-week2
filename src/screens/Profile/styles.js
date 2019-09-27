@@ -1,6 +1,7 @@
-import { Dimensions } from 'react-native'
+import { StyleSheet } from 'react-native'; 
+import { COLORS } from '../../assets';
 
-export default styles = {
+export default styles = StyleSheet.create({
   main: { 
     flex: 1, 
     justifyContent: 'space-between', 
@@ -16,7 +17,7 @@ export default styles = {
     flexDirection: 'row', 
     justifyContent: 'space-between', 
     alignItems: 'center', 
-    backgroundColor: '#FFF'
+    backgroundColor: COLORS.WHITE
   },
   detailsContainer: {
     flex: 1, 
@@ -30,7 +31,7 @@ export default styles = {
     fontSize: 20
   },
   bio: {
-    color: 'gray', 
+    color: COLORS.GRAY, 
     fontWeight: '500'
   },
   follow: {
@@ -38,7 +39,7 @@ export default styles = {
     height: 25, 
     justifyContent: 'center', 
     alignItems: 'center', 
-    backgroundColor: '#4771f6',
+    backgroundColor: COLORS.FOLLOW_COLOR,
     borderRadius: 20
   },
   followText: {
@@ -49,7 +50,7 @@ export default styles = {
     height: 25, 
     justifyContent: 'center', 
     alignItems: 'center', 
-    backgroundColor: '#78d5fa',
+    backgroundColor: COLORS.SEND_MESSAGE_COLOR,
     marginLeft: 10, 
     borderRadius: 20
   },
@@ -68,7 +69,7 @@ export default styles = {
     fontSize: 18
   },
   title: {
-    color: 'gray', 
+    color: COLORS.GRAY, 
     fontWeight: '500'
   },
   mansonryContainer: {
@@ -80,7 +81,7 @@ export default styles = {
     marginRight: 0,
   },
   profileImage: {
-    borderColor: '#FFF',
+    borderColor: COLORS.WHITE,
     borderRadius: 55,
     borderWidth: 1,
     height: 90,
@@ -94,4 +95,4 @@ export default styles = {
     justifyContent: 'space-around', 
     marginVertical: 20
   }
-}
+});

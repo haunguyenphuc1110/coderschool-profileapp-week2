@@ -26,31 +26,31 @@ const profileData = {
     {
       id: 4,
       image: IMAGES.IMAGE4,
-      imageHeight: 826,
-      imageWidth: 1080
+      imageHeight: 1080,
+      imageWidth: 826
     },
     {
       id: 5,
       image: IMAGES.IMAGE5,
-      imageHeight: 634,
-      imageWidth: 960
+      imageHeight: 960,
+      imageWidth: 634
     },
     {
       id: 6,
       image: IMAGES.IMAGE6,
       imageHeight: 720,
-      imageWidth: 960
+      imageWidth: 720
     },
     {
       id: 7,
       image: IMAGES.IMAGE7,
-      imageHeight: 525,
+      imageHeight: 800,
       imageWidth: 680
     },
     {
       id: 8,
       image: IMAGES.IMAGE8,
-      imageHeight: 480,
+      imageHeight: 600,
       imageWidth: 480
     },
     {

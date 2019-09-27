@@ -11,7 +11,6 @@ import {
   SafeAreaView
 } from 'react-native';
 import PropTypes from 'prop-types';
-import { mansonry } from '../../utils';
 import { AntDesign, MaterialIcons } from '@expo/vector-icons';
 import styles from './styles';
 import ListPost from '../ListPost/ListPost';
@@ -24,16 +23,7 @@ class Profile extends Component {
       { key: '1', title: 'Photos', count: 687 },
       { key: '3', title: 'Followers', count: '1.3M' },
       { key: '2', title: 'Following', count: 90 },
-    ]
-    this.state = {
-      postsMasonry: {}
-    }
-  }
-
-  componentWillMount() {
-    this.setState({
-      postsMasonry: mansonry(this.props.posts, 'imageHeight'),
-    })
+    ];
   }
 
   renderHeader = () => {
@@ -85,18 +75,20 @@ class Profile extends Component {
   };
 
   renderListPost = () => {
+    const { posts } = this.props;
+    const centerImgData = Math.floor(posts.length / 2);
     return (
       <View style={styles.mansonryContainer}>
         <View>
           <ListPost
             containerStyle={styles.sceneContainer}
-            posts={this.state.postsMasonry.leftCol}
+            posts={posts.slice(0, centerImgData)}
           />
         </View>
         <View>
           <ListPost
             containerStyle={styles.sceneContainer}
-            posts={this.state.postsMasonry.rightCol}
+            posts={posts.slice(centerImgData)}
           />
         </View>
       </View>
