@@ -1,179 +1,100 @@
-import React, { Component } from 'react'
+import React, { Component } from 'react';
 import {
   Animated,
   Image,
-  ImageBackground,
   Platform,
   ScrollView,
-  StyleSheet,
   Text,
+  TouchableOpacity,
+  StatusBar,
   View,
-} from 'react-native'
-import {
-  TabBar,
-  TabViewAnimated,
-  TabViewPagerPan,
-  TabViewPagerScroll,
-} from 'react-native-tab-view'
-import PropTypes from 'prop-types'
-import { image } from '../../utils'
-
-import profileStyles from './ProfileStyle'
-import Posts from './Posts'
-
-const styles = StyleSheet.create({ ...profileStyles })
+  SafeAreaView
+} from 'react-native';
+import PropTypes from 'prop-types';
+import { mansonry } from '../../utils';
+import { AntDesign, MaterialIcons } from '@expo/vector-icons';
+import styles from './styles';
+import ListPost from '../ListPost/ListPost';
 
 class Profile extends Component {
-  static propTypes = {
-    avatar: PropTypes.string.isRequired,
-    avatarBackground: PropTypes.string.isRequired,
-    bio: PropTypes.string.isRequired,
-    name: PropTypes.string.isRequired,
-    containerStyle: PropTypes.oneOfType([PropTypes.object, PropTypes.number]),
-    tabContainerStyle: PropTypes.oneOfType([
-      PropTypes.number,
-      PropTypes.object,
-    ]),
-    posts: PropTypes.arrayOf(
-      PropTypes.shape({
-        image: PropTypes.string,
-        imageHeight: PropTypes.number,
-        imageWidth: PropTypes.number,
-        postWidth: PropTypes.number,
-      })
-    ).isRequired,
-  }
 
-  static defaultProps = {
-    containerStyle: {},
-    tabContainerStyle: {},
-  }
-
-  state = {
-    tabs: {
-      index: 0,
-      routes: [
-        { key: '1', title: 'PHOTOS', count: 687 },
-        { key: '3', title: 'FOLLOWERS', count: '1.3 M' },
-        { key: '2', title: 'FOLLOWING', count: 90 },
-      ],
-    },
-    postsMasonry: {},
+  constructor(props) {
+    super(props);
+    this.tabs = [
+      { key: '1', title: 'Photos', count: 687 },
+      { key: '3', title: 'Followers', count: '1.3M' },
+      { key: '2', title: 'Following', count: 90 },
+    ]
+    this.state = {
+      postsMasonry: {}
+    }
   }
 
   componentWillMount() {
     this.setState({
-      postsMasonry: image.mansonry(this.props.posts, 'imageHeight'),
+      postsMasonry: mansonry(this.props.posts, 'imageHeight'),
     })
   }
 
-  _handleIndexChange = index => {
-    this.setState({
-      tabs: {
-        ...this.state.tabs,
-        index,
-      },
-    })
-  }
-
-  _renderHeader = props => {
+  renderHeader = () => {
     return (
-      <TabBar
-        {...props}
-        indicatorStyle={styles.indicatorTab}
-        pressOpacity={0.8}
-        renderLabel={this._renderLabel(props)}
-        style={styles.tabBar}
-      />
-    )
-  }
-
-  _renderScene = ({ route: { key } }) => {
-    switch (key) {
-      case '1':
-        return this.renderMansonry2Col()
-      case '2':
-        return this.renderMansonry2Col()
-      case '3':
-        return this.renderMansonry2Col()
-      default:
-        return <View />
-    }
-  }
-
-  _renderLabel = props => ({ route, index }) => {
-    const inputRange = props.navigationState.routes.map((x, i) => i)
-    const outputRange = inputRange.map(
-      inputIndex => (inputIndex === index ? 'black' : 'gray')
-    )
-    const color = props.position.interpolate({
-      inputRange,
-      outputRange,
-    })
-
-    return (
-      <View style={styles.tabRow}>
-        <Animated.Text style={[styles.tabLabelNumber, { color }]}>
-          {route.count}
-        </Animated.Text>
-        <Animated.Text style={[styles.tabLabelText, { color }]}>
-          {route.title}
-        </Animated.Text>
+      <View style={styles.header}>
+        <AntDesign name="arrowleft" size={24} onPress={() => alert('Backed!')} />
+        <AntDesign name="appstore1" size={24} onPress={() => alert('Filtered!')} />
       </View>
-    )
-  }
+    );
+  };
 
-  _renderPager = props => {
-    return Platform.OS === 'ios' ? (
-      <TabViewPagerScroll {...props} />
-    ) : (
-      <TabViewPagerPan {...props} />
-    )
-  }
-
-  renderContactHeader = () => {
-    const { avatar, avatarBackground, name, bio } = this.props
+  renderProfileHeader = () => {
+    const { avatar, name, bio } = this.props;
     return (
-      <View style={styles.headerContainer}>
-        <View style={styles.coverContainer}>
-          <ImageBackground
-            source={{
-              uri: avatarBackground,
-            }}
-            style={styles.coverImage}
-          >
-            <View style={styles.coverTitleContainer}>
-              <Text style={styles.coverTitle} />
-            </View>
-            <View style={styles.coverMetaContainer}>
-              <Text style={styles.coverName}>{name}</Text>
-              <Text style={styles.coverBio}>{bio}</Text>
-            </View>
-          </ImageBackground>
-        </View>
-        <View style={styles.profileImageContainer}>
+      <View style={styles.profileContainer}>
+        <View>
           <Image
-            source={{
-              uri: avatar,
-            }}
+            source={avatar}
             style={styles.profileImage}
           />
         </View>
+        <View style={styles.detailsContainer}>
+          <View style={{ flex: 1 }}>
+            <Text style={styles.name}>{name}</Text>
+            <Text style={styles.bio}>{bio}</Text>
+          </View>
+          <View style={{ flexDirection: 'row' }}>
+            <TouchableOpacity style={styles.follow} onPress={() => alert('Followed!')}>
+              <Text style={styles.followText}>Follow</Text>
+            </TouchableOpacity>
+            <TouchableOpacity style={styles.sent} onPress={() => alert('Sent!')}>
+              <MaterialIcons name="send" size={14} color="white" />
+            </TouchableOpacity>
+          </View>
+        </View>
       </View>
     )
   }
 
-  renderMansonry2Col = () => {
+  renderInfoProfile = () => {
+    return this.tabs.map((tab) =>
+      (
+        <View key={tab.key} style={styles.content}>
+          <Text style={styles.count}>{tab.count}</Text>
+          <Text style={styles.title}>{tab.title}</Text>
+        </View>
+      )
+    );
+  };
+
+  renderListPost = () => {
     return (
       <View style={styles.mansonryContainer}>
         <View>
-          <Posts
+          <ListPost
             containerStyle={styles.sceneContainer}
             posts={this.state.postsMasonry.leftCol}
           />
         </View>
         <View>
-          <Posts
+          <ListPost
             containerStyle={styles.sceneContainer}
             posts={this.state.postsMasonry.rightCol}
           />
@@ -182,25 +103,53 @@ class Profile extends Component {
     )
   }
 
-  render() {
+  renderBottomTab = () => {
     return (
-      <ScrollView style={styles.scroll}>
-        <View style={[styles.container, this.props.containerStyle]}>
-          <View style={styles.cardContainer}>
-            {this.renderContactHeader()}
-            <TabViewAnimated
-              navigationState={this.state.tabs}
-              onIndexChange={this._handleIndexChange}
-              renderHeader={this._renderHeader}
-              renderPager={this._renderPager}
-              renderScene={this._renderScene}
-              style={[styles.tabContainer, this.props.tabContainerStyle]}
-            />
-          </View>
-        </View>
-      </ScrollView>
+      <View style={styles.bottomTab}>
+        <AntDesign name="inbox" size={28} />
+        <AntDesign name="pluscircleo" size={28} />
+        <MaterialIcons name="person-outline" size={28} />
+      </View>
     )
   }
-}
+
+  render() {
+    return (
+      <SafeAreaView style={styles.main}>
+        <StatusBar backgroundColor="blue" barStyle="dark-content" hidden />
+        <ScrollView showsVerticalScrollIndicator={false}>
+          <View style={[styles.container, this.props.containerStyle]}>
+            {this.renderHeader()}
+            {this.renderProfileHeader()}
+            <View style={styles.infoProfile}>
+              {this.renderInfoProfile()}
+            </View>
+            {this.renderListPost()}
+          </View>
+        </ScrollView>
+        {this.renderBottomTab()}
+      </SafeAreaView>
+    )
+  }
+};
+
+Profile.propTypes = {
+  avatar: PropTypes.number.isRequired,
+  bio: PropTypes.string.isRequired,
+  name: PropTypes.string.isRequired,
+  containerStyle: PropTypes.oneOfType([PropTypes.object, PropTypes.number]),
+  posts: PropTypes.arrayOf(
+    PropTypes.shape({
+      image: PropTypes.number,
+      imageHeight: PropTypes.number,
+      imageWidth: PropTypes.number
+    })
+  ).isRequired,
+};
+
+Profile.defaultProps = {
+  containerStyle: {},
+  tabContainerStyle: {},
+};
 
 export default Profile;

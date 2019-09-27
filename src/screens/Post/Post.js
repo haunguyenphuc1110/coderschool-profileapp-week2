@@ -1,11 +1,9 @@
-import React from 'react'
-import { Image, StyleSheet, View } from 'react-native'
-import PropTypes from 'prop-types'
+import React from 'react';
+import { Image, View, Dimensions } from 'react-native';
+import styles from './styles';
+import PropTypes from 'prop-types';
 
-const styles = StyleSheet.create({
-  container: {},
-  postImage: {},
-})
+const width = Dimensions.get('window').width;
 
 const Post = ({
   containerStyle,
@@ -21,20 +19,20 @@ const Post = ({
           style={[
             styles.postImage,
             {
-              width: postWidth,
+              width: width/2 - 30,
               height: postWidth * (imageHeight / imageWidth),
             },
           ]}
-          source={{ uri: image }}
+          source={image}
         />
       )}
     </View>
   )
-}
+};
 
 Post.propTypes = {
   containerStyle: PropTypes.oneOfType([PropTypes.object, PropTypes.number]),
-  image: PropTypes.string,
+  image: PropTypes.number,
   imageHeight: PropTypes.number,
   imageWidth: PropTypes.number,
   postWidth: PropTypes.number,

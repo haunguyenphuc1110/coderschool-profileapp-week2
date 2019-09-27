@@ -1,54 +1,75 @@
 import { Dimensions } from 'react-native'
 
-export default {
-  cardContainer: {
-    flex: 1,
+export default styles = {
+  main: { 
+    flex: 1, 
+    justifyContent: 'space-between', 
+    marginHorizontal: 20 
   },
-  container: {
-    flex: 1,
+  header: {
+    flexDirection: 'row', 
+    justifyContent: 'space-between', 
+    marginVertical: 20
   },
-  coverBio: {
-    color: '#FFF',
-    fontSize: 15,
-    fontWeight: '600',
+  profileContainer: {
+    flex: 1, 
+    flexDirection: 'row', 
+    justifyContent: 'space-between', 
+    alignItems: 'center', 
+    backgroundColor: '#FFF'
   },
-  coverContainer: {
-    marginBottom: 55,
-    position: 'relative',
+  detailsContainer: {
+    flex: 1, 
+    flexDirection: 'column', 
+    justifyContent: 'space-between', 
+    alignItems: 'flex-start', 
+    marginLeft: 20
   },
-  coverImage: {
-    height: Dimensions.get('window').width * (3 / 4),
-    width: Dimensions.get('window').width,
+  name: {
+    fontWeight: 'bold', 
+    fontSize: 20
   },
-  coverMetaContainer: {
-    backgroundColor: 'transparent',
-    paddingBottom: 10,
-    paddingLeft: 135,
+  bio: {
+    color: 'gray', 
+    fontWeight: '500'
   },
-  coverName: {
-    color: '#FFF',
-    fontSize: 28,
-    fontWeight: 'bold',
-    paddingBottom: 2,
+  follow: {
+    width: 80, 
+    height: 25, 
+    justifyContent: 'center', 
+    alignItems: 'center', 
+    backgroundColor: '#4771f6',
+    borderRadius: 20
   },
-  coverTitle: {
-    color: '#FFF',
-    fontSize: 24,
-    fontWeight: 'bold',
-    textAlign: 'center',
+  followText: {
+    color: '#FFF'
   },
-  coverTitleContainer: {
-    backgroundColor: 'transparent',
-    flex: 1,
-    justifyContent: 'space-between',
-    paddingTop: 45,
+  sent: {
+    width: 50, 
+    height: 25, 
+    justifyContent: 'center', 
+    alignItems: 'center', 
+    backgroundColor: '#78d5fa',
+    marginLeft: 10, 
+    borderRadius: 20
   },
-  headerContainer: {
-    alignItems: 'center',
-    backgroundColor: '#FFF',
+  infoProfile: { 
+    flexDirection: 'row', 
+    justifyContent: 'space-around', 
+    marginVertical: 20 
   },
-  indicatorTab: {
-    backgroundColor: 'transparent',
+  content: {
+    flexDirection: 'column', 
+    justifyContent: 'center', 
+    alignItems: 'center'
+  },
+  count: {
+    fontWeight: '500', 
+    fontSize: 18
+  },
+  title: {
+    color: 'gray', 
+    fontWeight: '500'
   },
   mansonryContainer: {
     alignItems: 'center',
@@ -61,50 +82,16 @@ export default {
   profileImage: {
     borderColor: '#FFF',
     borderRadius: 55,
-    borderWidth: 3,
-    height: 110,
-    width: 110,
-  },
-  profileImageContainer: {
-    bottom: 0,
-    left: 10,
-    position: 'absolute',
+    borderWidth: 1,
+    height: 90,
+    width: 90,
   },
   sceneContainer: {
-    marginTop: 10,
+    marginTop: 20,
   },
-  scroll: {
-    backgroundColor: '#FFF',
-  },
-  tabBar: {
-    backgroundColor: 'transparent',
-    marginBottom: -10,
-    marginLeft: 130,
-    marginRight: 15,
-  },
-  tabContainer: {
-    flex: 1,
-    marginBottom: 12,
-    marginTop: -55,
-    position: 'relative',
-    zIndex: 10,
-  },
-  tabRow: {
-    flexWrap: 'wrap',
-    flexDirection: 'column',
-    justifyContent: 'flex-start',
-    alignItems: 'flex-start',
-    flex: 1,
-  },
-  tabLabelNumber: {
-    color: 'black',
-    fontSize: 22,
-    textAlign: 'center',
-    marginBottom: 2,
-  },
-  tabLabelText: {
-    color: 'black',
-    fontSize: 14,
-    textAlign: 'left',
+  bottomTab: {
+    flexDirection: 'row', 
+    justifyContent: 'space-around', 
+    marginVertical: 20
   }
 }

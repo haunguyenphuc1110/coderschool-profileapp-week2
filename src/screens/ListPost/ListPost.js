@@ -1,27 +1,18 @@
 import React, { Component } from 'react';
-import { Dimensions, ListView, StyleSheet } from 'react-native';
+import { Dimensions, FlatList } from 'react-native';
+import styles from './styles';
 import PropTypes from 'prop-types';
-
-import Post from './Post';
+import Post from '../Post/Post';
 
 const space = 10;
 const postContainerWidth = (Dimensions.get('window').width - space * 3) / 2;
-
-const styles = StyleSheet.create({
-  container: {},
-  postContainer: {
-    margin: 5,
-    padding: 0,
-    borderWidth: 0,
-  },
-})
 
 class ListPost extends Component {
   static propTypes = {
     containerStyle: PropTypes.oneOfType([PropTypes.object, PropTypes.number]),
     posts: PropTypes.arrayOf(
       PropTypes.shape({
-        image: PropTypes.string,
+        image: PropTypes.number,
         imageHeight: PropTypes.number,
         imageWidth: PropTypes.number,
       })
@@ -32,26 +23,20 @@ class ListPost extends Component {
     containerStyle: {},
   }
 
-  state = {
-    postDS: new ListView.DataSource({
-      rowHasChanged: (r1, r2) => r1 !== r2,
-    }).cloneWithRows(this.props.posts),
-  }
-
   render() {
     return (
-      <ListView
+      <FlatList
         scrollEnabled={false}
-        removeClippedSubviews={false}
-        contentContainerStyle={[styles.container, this.props.containerStyle]}
-        dataSource={this.state.postDS}
-        renderRow={e => {
+        data={this.props.posts}
+        keyExtractor={item => item.id.toString()}
+        numColumns={1}
+        renderItem={({item}) => {
           return (
             <Post
-              key={`post-${e.id} `}
+              key={`post-${item.id} `}
               containerStyle={styles.postContainer}
               postWidth={postContainerWidth}
-              {...e}
+              {...item}
             />
           )
         }}
