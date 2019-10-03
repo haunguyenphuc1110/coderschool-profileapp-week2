@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import { StyleSheet, Text, View } from 'react-native';
-import ProfileScreen from './src/screens/index';
+import ProfileScreen from './src/screens/ProfileScreen/Profile.screen';
 
 export default class App extends Component {
   render(){
@@ -9,12 +9,3 @@ export default class App extends Component {
     );
   }
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});

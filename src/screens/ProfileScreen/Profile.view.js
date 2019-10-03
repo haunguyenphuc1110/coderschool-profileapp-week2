@@ -13,7 +13,7 @@ import {
 import PropTypes from 'prop-types';
 import { AntDesign, MaterialIcons } from '@expo/vector-icons';
 import styles from './styles';
-import ListPost from '../ListPost/ListPost';
+import ListPost from '../../components/ListPost/ListPost';
 
 class Profile extends Component {
 
@@ -22,7 +22,7 @@ class Profile extends Component {
     this.tabs = [
       { key: '1', title: 'Photos', count: 687 },
       { key: '3', title: 'Followers', count: '1.3M' },
-      { key: '2', title: 'Following', count: 90 },
+      { key: '2', title: 'Following', count: 90 }
     ];
   }
 

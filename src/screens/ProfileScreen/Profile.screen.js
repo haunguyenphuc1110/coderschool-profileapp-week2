@@ -1,6 +1,6 @@
 import React from 'react';
-import profileData from '../mocks/profileData';
-import Profile from './Profile/Profile';
+import profileData from '../../mocks/profileData';
+import Profile from './Profile.view';
 
 const ProfileScreen = () => <Profile {...profileData} />
 
