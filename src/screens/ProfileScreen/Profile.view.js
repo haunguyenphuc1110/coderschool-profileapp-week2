@@ -1,8 +1,6 @@
 import React, { Component } from 'react';
 import {
-  Animated,
   Image,
-  Platform,
   ScrollView,
   Text,
   TouchableOpacity,
@@ -12,7 +10,7 @@ import {
 } from 'react-native';
 import PropTypes from 'prop-types';
 import { AntDesign, MaterialIcons } from '@expo/vector-icons';
-import styles from './styles';
+import styles from './Profile.styles';
 import ListPost from '../../components/ListPost/ListPost';
 
 class Profile extends Component {
