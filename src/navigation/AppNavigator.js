@@ -7,9 +7,9 @@ import DetailsScreen from '../screens/DetailsScreen/Details.screen';
 export default createAppContainer(
   createStackNavigator(
     {
-      // [ScreenIds.HOME]: {
-      //   screen: MainTabNavigator
-      // },
+      [ScreenIds.HOME]: {
+        screen: MainTabNavigator
+      },
       [ScreenIds.DETAILS]: {
         screen: DetailsScreen
       },

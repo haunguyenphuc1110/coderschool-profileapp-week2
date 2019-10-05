@@ -29,7 +29,7 @@ class Profile extends Component {
           source={{
             uri: 'https://upload.wikimedia.org/wikipedia/commons/thumb/2/2a/Instagram_logo.svg/1200px-Instagram_logo.svg.png'
           }}
-          style={{flex: 1, width: null, height: 40}}
+          style={styles.imageHeader}
           resizeMode="contain"/>
         <AntDesign name="appstore1" size={24} onPress={() => alert('Filtered!')} />
       </View>

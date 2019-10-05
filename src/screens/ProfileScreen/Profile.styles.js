@@ -25,6 +25,11 @@ const styles = StyleSheet.create({
     marginTop: 30,
     marginBottom: 10
   },
+  imageHeader: {
+    flex: 1, 
+    width: null, 
+    height: 40
+  },
   profileContainer: {
     flex: 1, 
     flexDirection: 'row', 
