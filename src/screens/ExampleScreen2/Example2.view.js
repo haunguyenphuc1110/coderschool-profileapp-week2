@@ -1,14 +1,14 @@
 import React, { Component } from 'react'
 import { Text, View } from 'react-native'
-import styles from './Details.styles';
-class Details extends Component {
+import styles from './Example2.styles';
+class Example2 extends Component {
   render() {
     return (
       <View style={styles.container}>
-        <Text> Details Screen </Text>
+        <Text> Example2 Screen </Text>
       </View>
     )
   }
 };
 
-export default Details;
+export default Example2;

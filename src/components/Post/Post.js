@@ -1,5 +1,5 @@
 import React from 'react';
-import { Image, View, Dimensions } from 'react-native';
+import { Image, View, Dimensions, TouchableOpacity } from 'react-native';
 import styles from './styles';
 import PropTypes from 'prop-types';
 
@@ -11,21 +11,23 @@ const Post = ({
   imageHeight,
   imageWidth,
   postWidth,
+  onNavigateToDetails
 }) => {
   return (
     <View style={[styles.container, containerStyle]}>
-      {image && (
+      <TouchableOpacity onPress={onNavigateToDetails}>
         <Image
-          style={[
-            styles.postImage,
-            {
-              width: width/2 - 30,
-              height: postWidth * (imageHeight / imageWidth),
-            },
-          ]}
-          source={image}
-        />
-      )}
+            style={[
+              styles.postImage,
+              {
+                width: width/2 - 30,
+                height: postWidth * (imageHeight / imageWidth),
+              },
+            ]}
+            source={image}
+          />
+      </TouchableOpacity>
+    
     </View>
   )
 };

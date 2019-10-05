@@ -4,9 +4,7 @@ import {
   ScrollView,
   Text,
   TouchableOpacity,
-  StatusBar,
-  View,
-  SafeAreaView
+  View
 } from 'react-native';
 import PropTypes from 'prop-types';
 import { AntDesign, MaterialIcons } from '@expo/vector-icons';
@@ -27,7 +25,12 @@ class Profile extends Component {
   renderHeader = () => {
     return (
       <View style={styles.header}>
-        <AntDesign name="arrowleft" size={24} onPress={() => alert('Backed!')} />
+        <Image 
+          source={{
+            uri: 'https://upload.wikimedia.org/wikipedia/commons/thumb/2/2a/Instagram_logo.svg/1200px-Instagram_logo.svg.png'
+          }}
+          style={{flex: 1, width: null, height: 40}}
+          resizeMode="contain"/>
         <AntDesign name="appstore1" size={24} onPress={() => alert('Filtered!')} />
       </View>
     );
@@ -73,18 +76,20 @@ class Profile extends Component {
   };
 
   renderListPost = () => {
-    const { posts } = this.props;
+    const { posts, navigation } = this.props;
     const centerImgData = Math.floor(posts.length / 2);
     return (
       <View style={styles.mansonryContainer}>
         <View>
           <ListPost
+            navigation={navigation}
             containerStyle={styles.sceneContainer}
             posts={posts.slice(0, centerImgData)}
           />
         </View>
         <View>
           <ListPost
+            navigation={navigation}
             containerStyle={styles.sceneContainer}
             posts={posts.slice(centerImgData)}
           />
@@ -93,23 +98,12 @@ class Profile extends Component {
     )
   }
 
-  renderBottomTab = () => {
-    return (
-      <View style={styles.bottomTab}>
-        <AntDesign name="inbox" size={28} />
-        <AntDesign name="pluscircleo" size={28} />
-        <MaterialIcons name="person-outline" size={28} />
-      </View>
-    )
-  }
-
   render() {
     return (
-      <SafeAreaView style={styles.main}>
-        <StatusBar backgroundColor="blue" barStyle="dark-content" hidden />
+      <View style={styles.main}>
+        {this.renderHeader()}
         <ScrollView showsVerticalScrollIndicator={false}>
           <View style={[styles.container, this.props.containerStyle]}>
-            {this.renderHeader()}
             {this.renderProfileHeader()}
             <View style={styles.infoProfile}>
               {this.renderInfoProfile()}
@@ -117,8 +111,7 @@ class Profile extends Component {
             {this.renderListPost()}
           </View>
         </ScrollView>
-        {this.renderBottomTab()}
-      </SafeAreaView>
+      </View>
     )
   }
 };

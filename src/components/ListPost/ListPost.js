@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { Dimensions, FlatList } from 'react-native';
+import ScreenIds from '../../navigation/screenIds';
 import styles from './styles';
 import PropTypes from 'prop-types';
 import Post from '../Post/Post';
@@ -7,25 +8,33 @@ import Post from '../Post/Post';
 const space = 10;
 const postContainerWidth = (Dimensions.get('window').width - space * 3) / 2;
 
-const renderEachPost = (item) => {
+const navigateToDetails = (item, navigation) => {
+  navigation.navigate(ScreenIds.DETAILS, {
+    item: item
+  })
+}
+
+const renderEachPost = (item, navigation) => {
   return (
     <Post
       key={`post-${item.id} `}
       containerStyle={styles.postContainer}
       postWidth={postContainerWidth}
+      onNavigateToDetails={() => navigateToDetails(item, navigation)}
       {...item}
     />
   )
 }
 
 const ListPost = props => {
+  const { navigation, posts } = props;
   return (
     <FlatList
       scrollEnabled={false}
-      data={props.posts}
+      data={posts}
       keyExtractor={item => item.id.toString()}
       numColumns={1}
-      renderItem={({ item }) => renderEachPost(item)}
+      renderItem={({ item }) => renderEachPost(item, navigation)}
     />
   )
 }

@@ -21,7 +21,9 @@ const styles = StyleSheet.create({
   header: {
     flexDirection: 'row', 
     justifyContent: 'space-between', 
-    marginVertical: 20
+    alignItems: 'center',
+    marginTop: 30,
+    marginBottom: 10
   },
   profileContainer: {
     flex: 1, 
@@ -102,11 +104,6 @@ const styles = StyleSheet.create({
   },
   sceneContainer: {
     marginTop: 20,
-  },
-  bottomTab: {
-    flexDirection: 'row', 
-    justifyContent: 'space-around', 
-    marginVertical: 20
   }
 });
 
