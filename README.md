@@ -20,4 +20,5 @@ Exercise about Profile App in React Native
 - [x] Setup stack navigation
 - [x] Design second screen
 - [x] Can navigate to another screen with param
-- [x] App work smoothly
+- [x] App works smoothly
+- [x] Structured code
