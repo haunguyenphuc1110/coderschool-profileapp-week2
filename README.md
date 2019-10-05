@@ -16,3 +16,8 @@ Exercise about Profile App in React Native
 - [x] Create beautiful Bottom tab layout using Flex + Vector icons
 - [x] Layout header with Back button and Filter button
 - [x] Make button Follow and Send Message can press and alert followed when press follow button, alert message sended when press on send message button
+- [x] Setup bottom tab navigation
+- [x] Setup stack navigation
+- [x] Design second screen
+- [x] Can navigate to another screen with param
+- [x] App work smoothly

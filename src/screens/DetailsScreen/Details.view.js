@@ -21,7 +21,7 @@ class Details extends Component {
     );
   }
 
-  renderContent = (item) => {
+  renderContent = () => {
     return (
       <View style={styles.contentContainer}>
         <View style={styles.placeContainer}>
